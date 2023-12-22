@@ -6,7 +6,7 @@
 /*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:24:35 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/21 23:52:12 by dolvin17         ###   ########.fr       */
+/*   Updated: 2023/12/22 15:17:42 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,13 @@ int	main(int argc, char **argv)
 	while (i < 10)
 	{
 		// f(z) = z^2 + c
-		temp = (z.real * z.real) + (z.i * z.i);
+		temp = (z.real * z.real) - (z.i * z.i);
 		z.i = 2 * z.real * z.i;
 		z.real = temp;
+
 		z.real = z.real + c.real;
 		z.i = z.i + c.i;
-		printf("%d x = %f y = %f\n", z.real, z.i);
+		printf("x = %f y = %f\n", z.real, z.i);
 		i++;
 	}
 	return (0);

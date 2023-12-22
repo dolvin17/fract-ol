@@ -6,11 +6,25 @@
 /*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:24:35 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/22 15:17:42 by dolvin17         ###   ########.fr       */
+/*   Updated: 2023/12/22 16:21:34 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void	julia(char	**real, char **imaginary)
+{
+	int	x;
+	int	y;
+
+	if (!*real || !*imaginary)
+		return ;
+	x = ft_atoi(*real);
+	y = ft_atoi(*imaginary);
+	printf("real: %d\n", x);
+	printf("imaginay: %d\n", y);
+	printf("hola, soy julia");
+}
 
 int	main(int argc, char **argv)
 {
@@ -19,9 +33,20 @@ int	main(int argc, char **argv)
 	int			i;
 	double		temp;
 
-	iferror(!(argc == 2), EINVAL, "Error");
-	iferror(ft_strncmp(argv[1], "mandelbrot", 10) != 0
-		&& ft_strncmp(argv[1], "julia", 5) != 0, EINVAL, "Error");
+	i = 0;
+	if (argc <= 4)
+	{
+		if (argv[1] && ft_strncmp(argv[1], "julia", 5) == 0)
+		{
+			julia(&argv[2], &argv[3]);
+		}
+		else if (argv[1] && ft_strncmp(argv[1], "mandelbrot", 10) == 0)
+		{
+			printf("fn mandelbrot");
+		}
+		else
+			printf("parametros erroneos");
+	}
 	i = 0;
 	z.real = 0;
 	z.i = 0;

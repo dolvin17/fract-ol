@@ -6,7 +6,7 @@
 /*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:28:15 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/22 15:57:16 by dolvin17         ###   ########.fr       */
+/*   Updated: 2023/12/22 23:47:28 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,23 +38,34 @@ int	ft_strncmp(char	*str1, char *str2, int size)
 	return (0);
 }
 
-int	ft_atoi(char	*str)
+int	ft_atof(char	*str)
 {
-	int	sign;
-	int	nbr;
-	int	i;
+	int		sign;
+	int		i;
+	double	nbr;
+	double	decimal;
+	double	pos;
 
 	sign = 1;
+	pos = 1;
 	nbr = 0;
 	i = 0;
 	if (str[i] == '-')
 		sign *= -1;
 	if (str[i] == '+' || str[i] == '-')
 		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	while (str[i] >= '0' && str[i] <= '9' && str[i] != '.')
 	{
 		nbr = nbr * 10 + (str[i] - 48);
 		i++;
 	}
-	return (nbr * sign);
+	if (str[i] == '.')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		pos = pos / 10;
+		decimal = decimal + (str[i] - 48) * pos;
+		i++;
+	}
+	return ((nbr + decimal) * sign);
 }

@@ -6,7 +6,7 @@
 /*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:19:21 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/22 15:57:34 by dolvin17         ###   ########.fr       */
+/*   Updated: 2023/12/22 22:35:56 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ typedef struct s_complex
 //Parsing errors
 void	iferror(bool iferror, int value, char *str);
 int		ft_strncmp(char	*str1, char *str2, int size);
-int		ft_atoi(char	*str);
+int		ft_atof(char	*str);
 #endif

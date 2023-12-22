@@ -6,7 +6,7 @@
 /*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:24:35 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/22 16:21:34 by dolvin17         ###   ########.fr       */
+/*   Updated: 2023/12/22 23:54:10 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	julia(char	**real, char **imaginary)
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 
 	if (!*real || !*imaginary)
 		return ;
-	x = ft_atoi(*real);
-	y = ft_atoi(*imaginary);
-	printf("real: %d\n", x);
-	printf("imaginay: %d\n", y);
-	printf("hola, soy julia");
+	x = ft_atof(*real);
+	y = ft_atof(*imaginary);
+	printf("real: 	  %3.6f\n", x);
+	printf("imaginay: %3.6f\n", y);
+	//printf("hola, soy julia");
 }
 
 int	main(int argc, char **argv)
@@ -38,6 +38,7 @@ int	main(int argc, char **argv)
 	{
 		if (argv[1] && ft_strncmp(argv[1], "julia", 5) == 0)
 		{
+			printf("%s\n", argv[2]);
 			julia(&argv[2], &argv[3]);
 		}
 		else if (argv[1] && ft_strncmp(argv[1], "mandelbrot", 10) == 0)
@@ -61,7 +62,7 @@ int	main(int argc, char **argv)
 
 		z.real = z.real + c.real;
 		z.i = z.i + c.i;
-		printf("x = %f y = %f\n", z.real, z.i);
+		//printf("x = %f y = %f\n", z.real, z.i);
 		i++;
 	}
 	return (0);

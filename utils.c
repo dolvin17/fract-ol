@@ -6,7 +6,7 @@
 /*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:28:15 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/23 19:43:35 by dolvin17         ###   ########.fr       */
+/*   Updated: 2023/12/23 22:28:48 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,25 @@ int	ft_atof(char	*str)
 double	scale(double value, double new_min, double new_max, double old_min, double old_max)
 {
 	return ((new_max - new_min) * (value - old_min) / (old_max - old_min) + new_min);
+}
+
+t_complex	sum_complex(t_complex z1, t_complex z2)
+{
+	t_complex	value;
+
+	value.real = (z1.real + z2.real);
+	value.i = (z1.i + z2.i);
+	return (value);
+}
+
+//cuadrado de Z
+// coordenada x = x^2 - y^2
+// coordenada y = 2*x*y
+t_complex	square_z(t_complex z)
+{
+	t_complex	value;
+
+	value.real = (z.real * z.real) - (z.i * z.i);
+	value.i = 2 * z.real * z.i;
+	return (value);
 }

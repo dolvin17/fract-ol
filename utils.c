@@ -6,7 +6,7 @@
 /*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:28:15 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/22 23:47:28 by dolvin17         ###   ########.fr       */
+/*   Updated: 2023/12/23 19:43:35 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_strncmp(char	*str1, char *str2, int size)
 	}
 	return (0);
 }
-
+//imput julia decimales
 int	ft_atof(char	*str)
 {
 	int		sign;
@@ -68,4 +68,10 @@ int	ft_atof(char	*str)
 		i++;
 	}
 	return ((nbr + decimal) * sign);
+}
+//es necesario escalar los numeros
+//para acceder a los valores que componen los fractales
+double	scale(double value, double new_min, double new_max, double old_min, double old_max)
+{
+	return ((new_max - new_min) * (value - old_min) / (old_max - old_min) + new_min);
 }

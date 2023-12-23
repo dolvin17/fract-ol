@@ -6,7 +6,7 @@
 /*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:19:21 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/23 18:42:08 by dolvin17         ###   ########.fr       */
+/*   Updated: 2023/12/23 22:24:23 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,15 @@ typedef struct s_fractol
 # define WIDTH 800
 # define HEIGHT 800
 //Parsing errors
-void	iferror(bool iferror, int value, char *str);
-int		ft_strncmp(char	*str1, char *str2, int size);
-int		ft_atof(char	*str);
+void		iferror(bool iferror, int value, char *str);
+int			ft_strncmp(char	*str1, char *str2, int size);
+int			ft_atof(char	*str);
 //init struct
-void	init_fractol(t_fractol *fractol);
+void		init_fractol(t_fractol *fractol);
+// data
+double		scale(double value, double new_min, double new_max, double old_min, double old_max);
+//suma dos numeros complejos.
+t_complex	sum_complex(t_complex zx, t_complex zi);
+//cuadrado de un numero complejo. i^2 = -1
+t_complex	square_z(t_complex z);
 #endif

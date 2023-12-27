@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_fractol.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
+/*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:50:32 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/26 19:12:24 by dolvin17         ###   ########.fr       */
+/*   Updated: 2023/12/27 19:28:32 by ghuertas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ static	void	coordenates(int x, int	y, t_fractol *fractol)
 	z.real = 0.0;
 	z.i = 0.0;
 	//escala para entrar en el set
-	c.real = scale(x, -2, 2, 0, WIDTH) + fractol->move_x;
-	c.i = scale(y, 2, -2, 0, HEIGHT) + fractol->move_y;
+	c.real = (scale(x, -2, 2, 0, WIDTH) * fractol->zoom) + fractol->move_x;
+	c.i = (scale(y, 2, -2, 0, HEIGHT) * fractol->zoom) + fractol->move_y;
 	i = 0;
 	//while n cantidad de iteraciones de Z, checking if point converge o diverge
 	while (i < fractol->iterations)
@@ -54,7 +54,7 @@ static	void	coordenates(int x, int	y, t_fractol *fractol)
 		++i;
 	}
 	//los puntos convergen
-    my_mlx_pixel_put(&fractol->image, x, y, NEON_GREEN);
+    my_mlx_pixel_put(&fractol->image, x, y, BLACK);
 }
 void	rendering_fractol(t_fractol *fractol)
 {

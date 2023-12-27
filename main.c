@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
+/*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:24:35 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/24 01:18:06 by dolvin17         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:47:59 by ghuertas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	main(int argc, char **argv)
 			fractol.name = argv[1];
 			init_fractol(&fractol);
 			rendering_fractol(&fractol);
+			mlx_loop(fractol.ptr_mlx);
+			//mlx_hook(fractol.open_w, 02, 0L, key_control, &fractol);
 			printf("fn mandelbrot"); // TODO
 		}
 		else

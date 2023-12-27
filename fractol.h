@@ -6,7 +6,7 @@
 /*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:19:21 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/27 17:49:48 by ghuertas         ###   ########.fr       */
+/*   Updated: 2023/12/27 18:54:16 by ghuertas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define KEY_RIGHT			124
 # define KEY_DOWN			125
 # define KEY_UP				126
+# define MOUSE_UP			5
+# define MOUSE_DOWN			4
 
 typedef struct s_complex
 {
@@ -83,4 +85,5 @@ void		rendering_fractol(t_fractol *fractol);
 //Hooking events
 void	hook_events(t_fractol *fractol);
 int		key_control(int keysym, t_fractol *fractol);
+int		mouse_control(int keycode, int x, int y, t_fractol *fractol);
 #endif

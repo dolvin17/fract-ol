@@ -6,7 +6,7 @@
 /*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:50:32 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/24 01:17:45 by dolvin17         ###   ########.fr       */
+/*   Updated: 2023/12/26 19:12:24 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,25 @@ static	void	coordenates(int x, int	y, t_fractol *fractol)
 	z.real = 0.0;
 	z.i = 0.0;
 	//escala para entrar en el set
-	c.real = scale(x, -2, 2, 0, WIDTH);
-	c.i = scale(y, 2, -2, 0, HEIGHT);
+	c.real = scale(x, -2, 2, 0, WIDTH) + fractol->move_x;
+	c.i = scale(y, 2, -2, 0, HEIGHT) + fractol->move_y;
 	i = 0;
 	//while n cantidad de iteraciones de Z, checking if point converge o diverge
-	while (i < 42)
+	while (i < fractol->iterations)
 	{
 		//z = z^2 + c
 		z = sum_complex(square_z(z), c);
 		//si diverge
-		if ((z.real * z.real) + (z.i * z.i) > 4)
+		if ((z.real * z.real) + (z.i * z.i) > fractol->hypotenuse)
 		{
-			color = scale(i, BLACK, NEON_PINK, 0, 42);
+			color = scale(i, NEON_YELLOW, NEON_PINK, 0, fractol->iterations);
 			my_mlx_pixel_put(&fractol->image, x, y, color);
 			return ;
 		}
 		++i;
 	}
 	//los puntos convergen
-	my_mlx_pixel_put(&fractol->image, x, y, NEON_BLUE);
+    my_mlx_pixel_put(&fractol->image, x, y, NEON_GREEN);
 }
 void	rendering_fractol(t_fractol *fractol)
 {
@@ -69,5 +69,4 @@ void	rendering_fractol(t_fractol *fractol)
 			coordenates(x, y, fractol);
 	}
 	mlx_put_image_to_window(fractol->ptr_mlx, fractol->open_w, fractol->image.img_ptr, 0, 0);
-	mlx_loop(fractol->ptr_mlx);
 }

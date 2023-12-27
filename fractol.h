@@ -6,7 +6,7 @@
 /*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:19:21 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/24 01:16:29 by dolvin17         ###   ########.fr       */
+/*   Updated: 2023/12/26 19:25:10 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,23 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
 
+# define KEY_EXIT		17
+
+# define KEY_ESC			53
+# define KEY_RESET			15
+# define KEY_RETURN			36
+
+# define KEY_W				13
+# define KEY_A				0
+# define KEY_S				1
+# define KEY_D				2
+# define KEY_UP				126
+# define KEY_LEFT			123
+# define KEY_DOWN			125
+# define KEY_RIGHT			124
 
 typedef struct s_complex
 {
@@ -42,18 +58,23 @@ typedef struct s_fractol
 	void	*ptr_mlx;
 	void	*open_w;
 	t_data	image;
+	int		iterations;
+	double	hypotenuse;
+	double	move_x;
+	double	move_y;
 }	t_fractol;
 
 # define WIDTH 800
 # define HEIGHT 800
 //colors for fractal
-# define NEON_PINK 0xFF6EC7
-# define NEON_GREEN 0x39FF14
-# define NEON_BLUE 0x00BFFF
-# define NEON_YELLOW 0xFFFF00
-# define NEON_ORANGE 0xFFA500
+# define NEON_PINK 0xFF1493
+# define NEON_GREEN 0x00FF00
+# define NEON_BLUE 0x00FFFF
+# define NEON_YELLOW 0xBBFF00
+# define NEON_RED 0xAA0000
 # define BLACK 0x000000
 # define WHITE 0xFFFFFF
+
 //Parsing errors
 void		iferror(bool iferror, int value, char *str);
 int			ft_strncmp(char	*str1, char *str2, int size);
@@ -66,5 +87,8 @@ double		scale(double value, double new_min, double new_max, double old_min, doub
 t_complex	sum_complex(t_complex z1, t_complex z2);
 //cuadrado de un numero complejo. i^2 = -1
 t_complex	square_z(t_complex z);
-void	rendering_fractol(t_fractol *fractol);
+void		rendering_fractol(t_fractol *fractol);
+//Hooking events
+void	hook_events(t_fractol *fractol);
+int		key_control(int keysym, t_fractol *fractol);
 #endif

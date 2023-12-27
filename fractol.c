@@ -6,12 +6,19 @@
 /*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 17:47:47 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/23 20:12:50 by dolvin17         ###   ########.fr       */
+/*   Updated: 2023/12/26 19:31:42 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+void	init_util_data(t_fractol *fractol)
+{
+	fractol->iterations = 42;
+	fractol->hypotenuse = 4;
+	fractol->move_x = 0.0;
+	fractol->move_y = 0.0;
+}
 // funcion para inicializar el struct
 void	init_fractol(t_fractol *fractol)
 {
@@ -31,4 +38,6 @@ void	init_fractol(t_fractol *fractol)
 	//pdte inicializar las variables de la imagen
 	//bpp, line_len, endian
 	//datos del fractal
+	init_util_data(fractol);
+	//hook_events(fractol);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
+/*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:19:21 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/26 19:25:10 by dolvin17         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:49:48 by ghuertas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,14 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
-# include <X11/X.h>
-# include <X11/keysym.h>
 
-# define KEY_EXIT		17
-
+# define KEY_PLUS			30
+# define KEY_MINUS			44
 # define KEY_ESC			53
-# define KEY_RESET			15
-# define KEY_RETURN			36
-
-# define KEY_W				13
-# define KEY_A				0
-# define KEY_S				1
-# define KEY_D				2
-# define KEY_UP				126
 # define KEY_LEFT			123
-# define KEY_DOWN			125
 # define KEY_RIGHT			124
+# define KEY_DOWN			125
+# define KEY_UP				126
 
 typedef struct s_complex
 {
@@ -62,6 +53,7 @@ typedef struct s_fractol
 	double	hypotenuse;
 	double	move_x;
 	double	move_y;
+	double	zoom;
 }	t_fractol;
 
 # define WIDTH 800

@@ -6,19 +6,20 @@
 #    By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/20 21:02:51 by dolvin17          #+#    #+#              #
-#    Updated: 2023/12/23 23:28:50 by dolvin17         ###   ########.fr        #
+#    Updated: 2023/12/26 16:48:51 by dolvin17         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS =	main.c \
 		utils.c \
 		fractol.c \
-		rendering_fractol.c
+		rendering_fractol.c \
+		events.c
 
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -g3 -I/opt/X11/include
 RM_RF = rm -rf
 NAME = fractol
 MLX_PATH = minilibx_opengl_20191021
@@ -31,7 +32,7 @@ $(MLX):
 	@make -sC $(MLX_PATH)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L$(MLX_PATH) -lmlx -framework OpenGL -framework AppKit
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L$(MLX_PATH) -lmlx -framework OpenGL -framework AppKit -I /opt/X11/include -L /opt/X11/lib -lX11
 
 clean:
 	@if [ -e "$(OBJS)" -o -e "$(MLX_PATH)/$(OBJS)" ]; then \

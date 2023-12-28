@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 20:21:22 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/27 19:25:38 by ghuertas         ###   ########.fr       */
+/*   Updated: 2023/12/28 22:25:17 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	close_handler(t_fractol *fractol)
 
 int	key_control(int keycode, t_fractol *fractol)
 {
+	printf("tecla %d\n", keycode);
 	if (keycode == KEY_ESC)
 		close_handler(fractol);
 	else if (keycode == KEY_UP)
@@ -38,6 +39,20 @@ int	key_control(int keycode, t_fractol *fractol)
 	rendering_fractol(fractol);
 	return (0);
 }
+
+void	zoom_out(t_fractol	*fractol, double mouse_x, double mouse_y)
+{
+	fractol->zoom *= 2.0;
+	fractol->move_x += mouse_x / 2.0;
+	fractol->move_y += mouse_y / 2.0;
+}
+void	zoom_in(t_fractol	*fractol, double mouse_x, double mouse_y)
+{
+	fractol->zoom /= 2.0;
+	fractol->move_x -= mouse_x / 2.0;
+	fractol->move_y -= mouse_y / 2.0;
+}
+/*
 void	zoom_in(t_fractol	*fractol, double mouse_x, double mouse_y)
 {
 	double zoom_factor;
@@ -58,7 +73,7 @@ void	zoom_out(t_fractol	*fractol, double mouse_x, double mouse_y)
 	fractol->move_x += (mouse_x - fractol->move_x) * (1 - zoom_factor);
 	fractol->move_y += (mouse_y - fractol->move_y) * (1 - zoom_factor);
 	fractol->zoom *= zoom_factor;
-}
+}*/
 int	mouse_control(int keycode, int x, int y, t_fractol *fractol)
 {	
 	double i;
@@ -66,8 +81,6 @@ int	mouse_control(int keycode, int x, int y, t_fractol *fractol)
 
 	real = (x - WIDTH / 2) / (0.5 * WIDTH * fractol->zoom) + fractol->move_x;
 	i = (y - HEIGHT / 2) / (0.5 * HEIGHT * fractol->zoom) + fractol->move_y;
-	
-	
 	printf("x posicion %d\n", x);
 	printf("y posicion: %d\n", y);
 	if (keycode == MOUSE_UP)

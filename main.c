@@ -3,27 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:24:35 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/27 17:47:59 by ghuertas         ###   ########.fr       */
+/*   Updated: 2023/12/28 22:16:36 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	julia(char	**real, char **imaginary)
+void	julia(char	**real, char **imaginary, t_fractol *fractol)
 {
-	double	x;
-	double	y;
-
-	if (!*real || !*imaginary)
-		return ;
-	x = ft_atof(*real);
-	y = ft_atof(*imaginary);
-	printf("real: 	  %3.6f\n", x);
-	printf("imaginay: %3.6f\n", y);
-	//printf("hola, soy julia");
+	fractol->julia_real = ft_atof(*real);
+	fractol->julia_i = ft_atof(*imaginary);
 }
 
 int	main(int argc, char **argv)
@@ -35,7 +27,11 @@ int	main(int argc, char **argv)
 		if (argv[1] && ft_strncmp(argv[1], "julia", 5) == 0)
 		{
 			fractol.name = argv[1];
-			julia(&argv[2], &argv[3]);
+			julia(&argv[2], &argv[3], &fractol);
+			fractol.name = argv[1];
+			init_fractol(&fractol);
+			rendering_fractol(&fractol);
+			mlx_loop(fractol.ptr_mlx);
 		}
 		else if (argv[1] && ft_strncmp(argv[1], "mandelbrot", 10) == 0)
 		{
@@ -43,8 +39,6 @@ int	main(int argc, char **argv)
 			init_fractol(&fractol);
 			rendering_fractol(&fractol);
 			mlx_loop(fractol.ptr_mlx);
-			//mlx_hook(fractol.open_w, 02, 0L, key_control, &fractol);
-			printf("fn mandelbrot"); // TODO
 		}
 		else
 		{

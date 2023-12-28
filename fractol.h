@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:19:21 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/27 18:54:16 by ghuertas         ###   ########.fr       */
+/*   Updated: 2023/12/28 22:22:49 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ typedef struct s_fractol
 	double	move_x;
 	double	move_y;
 	double	zoom;
+	double	julia_real;
+	double	julia_i;
+
 }	t_fractol;
 
 # define WIDTH 800

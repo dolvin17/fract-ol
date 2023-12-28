@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_fractol.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:50:32 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/27 19:28:32 by ghuertas         ###   ########.fr       */
+/*   Updated: 2023/12/28 21:33:53 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,19 @@ void	my_mlx_pixel_put(t_data *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+void	mandelbrot_or_julia(t_complex *z, t_complex *c, t_fractol *fractol)
+{
+	if (!(ft_strncmp(fractol->name, "julia", 5)))
+	{
+		c->real = fractol->julia_real;
+		c->i = fractol->julia_i;
+	}
+	else
+	{
+		c->real = z->real;
+		c->i = z->i;
+	}
+}
 //fn to get set complex numbers
 static	void	coordenates(int x, int	y, t_fractol *fractol)
 {
@@ -32,13 +45,11 @@ static	void	coordenates(int x, int	y, t_fractol *fractol)
 	int			i;
 	int			color;
 
-	//primera iteración
-	z.real = 0.0;
-	z.i = 0.0;
-	//escala para entrar en el set
-	c.real = (scale(x, -2, 2, 0, WIDTH) * fractol->zoom) + fractol->move_x;
-	c.i = (scale(y, 2, -2, 0, HEIGHT) * fractol->zoom) + fractol->move_y;
+	//1 iteracion
+	z.real = (scale(x, -2, 2, 0, WIDTH) * fractol->zoom) + fractol->move_x;
+	z.i = (scale(y, 2, -2, 0, HEIGHT) * fractol->zoom) + fractol->move_y;
 	i = 0;
+	mandelbrot_or_julia(&z, &c, fractol);
 	//while n cantidad de iteraciones de Z, checking if point converge o diverge
 	while (i < fractol->iterations)
 	{

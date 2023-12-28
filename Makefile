@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ghuertas <ghuertas@student.42.fr>          +#+  +:+       +#+         #
+#    By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/20 21:02:51 by dolvin17          #+#    #+#              #
-#    Updated: 2023/12/27 17:42:20 by ghuertas         ###   ########.fr        #
+#    Updated: 2023/12/28 12:41:20 by dolvin17         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ $(MLX):
 	@make -sC $(MLX_PATH)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L$(MLX_PATH) -lmlx -framework OpenGL -framework AppKit -I
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L$(MLX_PATH) -lmlx -framework OpenGL -framework AppKit
 
 clean:
 	@if [ -e "$(OBJS)" -o -e "$(MLX_PATH)/$(OBJS)" ]; then \

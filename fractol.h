@@ -6,7 +6,7 @@
 /*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:19:21 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/28 22:22:49 by dolvin17         ###   ########.fr       */
+/*   Updated: 2023/12/29 23:39:57 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <math.h>
 
 # define KEY_PLUS			30
 # define KEY_MINUS			44
@@ -52,17 +53,16 @@ typedef struct s_fractol
 	void	*open_w;
 	t_data	image;
 	int		iterations;
-	double	hypotenuse;
 	double	move_x;
 	double	move_y;
 	double	zoom;
-	double	julia_real;
-	double	julia_i;
+	double	julia_real; //x
+	double	julia_i; // y
 
 }	t_fractol;
 
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 1000
+# define HEIGHT 1000
 //colors for fractal
 # define NEON_PINK 0xFF1493
 # define NEON_GREEN 0x00FF00
@@ -75,7 +75,7 @@ typedef struct s_fractol
 //Parsing errors
 void		iferror(bool iferror, int value, char *str);
 int			ft_strncmp(char	*str1, char *str2, int size);
-int			ft_atof(char	*str);
+double			ft_atof(char	*str);
 //init struct
 void		init_fractol(t_fractol *fractol);
 // data
@@ -84,6 +84,7 @@ double		scale(double value, double new_min, double new_max, double old_min, doub
 t_complex	sum_complex(t_complex z1, t_complex z2);
 //cuadrado de un numero complejo. i^2 = -1
 t_complex	square_z(t_complex z);
+double hypotenuse(t_complex z);
 void		rendering_fractol(t_fractol *fractol);
 //Hooking events
 void	hook_events(t_fractol *fractol);

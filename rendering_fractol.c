@@ -6,7 +6,7 @@
 /*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:50:32 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/28 21:33:53 by dolvin17         ###   ########.fr       */
+/*   Updated: 2023/12/29 23:24:31 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	mandelbrot_or_julia(t_complex *z, t_complex *c, t_fractol *fractol)
 		c->i = z->i;
 	}
 }
+
 //fn to get set complex numbers
 static	void	coordenates(int x, int	y, t_fractol *fractol)
 {
@@ -44,7 +45,6 @@ static	void	coordenates(int x, int	y, t_fractol *fractol)
 	t_complex	c;
 	int			i;
 	int			color;
-
 	//1 iteracion
 	z.real = (scale(x, -2, 2, 0, WIDTH) * fractol->zoom) + fractol->move_x;
 	z.i = (scale(y, 2, -2, 0, HEIGHT) * fractol->zoom) + fractol->move_y;
@@ -56,7 +56,7 @@ static	void	coordenates(int x, int	y, t_fractol *fractol)
 		//z = z^2 + c
 		z = sum_complex(square_z(z), c);
 		//si diverge
-		if ((z.real * z.real) + (z.i * z.i) > fractol->hypotenuse)
+		if (hypotenuse(z) > 2)
 		{
 			color = scale(i, NEON_YELLOW, NEON_PINK, 0, fractol->iterations);
 			my_mlx_pixel_put(&fractol->image, x, y, color);

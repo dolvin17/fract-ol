@@ -6,7 +6,7 @@
 /*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 20:21:22 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/28 22:25:17 by dolvin17         ###   ########.fr       */
+/*   Updated: 2023/12/29 23:38:33 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,37 +43,16 @@ int	key_control(int keycode, t_fractol *fractol)
 void	zoom_out(t_fractol	*fractol, double mouse_x, double mouse_y)
 {
 	fractol->zoom *= 2.0;
-	fractol->move_x += mouse_x / 2.0;
-	fractol->move_y += mouse_y / 2.0;
+	fractol->move_x += mouse_x / (0.5 * WIDTH * fractol->zoom);
+	fractol->move_y += mouse_y / (0.5 * HEIGHT * fractol->zoom);
 }
 void	zoom_in(t_fractol	*fractol, double mouse_x, double mouse_y)
 {
 	fractol->zoom /= 2.0;
-	fractol->move_x -= mouse_x / 2.0;
-	fractol->move_y -= mouse_y / 2.0;
-}
-/*
-void	zoom_in(t_fractol	*fractol, double mouse_x, double mouse_y)
-{
-	double zoom_factor;
-	
-	zoom_factor = 0.95;
-
-	fractol->move_x += (mouse_x - fractol->move_x) * (1 - zoom_factor);
-	fractol->move_y += (mouse_y - fractol->move_y) * (1 - zoom_factor);
-	fractol->zoom *= zoom_factor;
+	fractol->move_x -= mouse_x / (0.5 * WIDTH * fractol->zoom);
+	fractol->move_y -= mouse_y / (0.5 * HEIGHT * fractol->zoom);
 }
 
-void	zoom_out(t_fractol	*fractol, double mouse_x, double mouse_y)
-{
-	double zoom_factor;
-	
-	zoom_factor = 1.05;
-
-	fractol->move_x += (mouse_x - fractol->move_x) * (1 - zoom_factor);
-	fractol->move_y += (mouse_y - fractol->move_y) * (1 - zoom_factor);
-	fractol->zoom *= zoom_factor;
-}*/
 int	mouse_control(int keycode, int x, int y, t_fractol *fractol)
 {	
 	double i;

@@ -6,7 +6,7 @@
 /*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:28:15 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/23 22:28:48 by dolvin17         ###   ########.fr       */
+/*   Updated: 2023/12/29 22:58:32 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_strncmp(char	*str1, char *str2, int size)
 	return (0);
 }
 //imput julia decimales
-int	ft_atof(char	*str)
+double	ft_atof(char	*str)
 {
 	int		sign;
 	int		i;
@@ -92,7 +92,12 @@ t_complex	square_z(t_complex z)
 {
 	t_complex	value;
 
-	value.real = (z.real * z.real) - (z.i * z.i);
+	value.real = pow(z.real, 2) - pow(z.i, 2);
 	value.i = 2 * z.real * z.i;
 	return (value);
+}
+
+double hypotenuse(t_complex z)
+{
+	return (hypot(z.real, z.i));
 }

@@ -6,7 +6,7 @@
 /*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:50:32 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/29 23:24:31 by dolvin17         ###   ########.fr       */
+/*   Updated: 2023/12/30 01:34:27 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static	void	coordenates(int x, int	y, t_fractol *fractol)
 		++i;
 	}
 	//los puntos convergen
-    my_mlx_pixel_put(&fractol->image, x, y, BLACK);
+    my_mlx_pixel_put(&fractol->image, x, y, NEON_RED);
 }
 void	rendering_fractol(t_fractol *fractol)
 {

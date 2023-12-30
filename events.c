@@ -6,7 +6,7 @@
 /*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 20:21:22 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/29 23:38:33 by dolvin17         ###   ########.fr       */
+/*   Updated: 2023/12/30 01:12:38 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ int	key_control(int keycode, t_fractol *fractol)
 
 void	zoom_out(t_fractol	*fractol, double mouse_x, double mouse_y)
 {
-	fractol->zoom *= 2.0;
+	fractol->zoom /= 1.05 * 0.5;
 	fractol->move_x += mouse_x / (0.5 * WIDTH * fractol->zoom);
 	fractol->move_y += mouse_y / (0.5 * HEIGHT * fractol->zoom);
 }
 void	zoom_in(t_fractol	*fractol, double mouse_x, double mouse_y)
 {
-	fractol->zoom /= 2.0;
+	fractol->zoom *= 0.95 * 0.5;
 	fractol->move_x -= mouse_x / (0.5 * WIDTH * fractol->zoom);
 	fractol->move_y -= mouse_y / (0.5 * HEIGHT * fractol->zoom);
 }
@@ -58,8 +58,8 @@ int	mouse_control(int keycode, int x, int y, t_fractol *fractol)
 	double i;
 	double real;
 
-	real = (x - WIDTH / 2) / (0.5 * WIDTH * fractol->zoom) + fractol->move_x;
-	i = (y - HEIGHT / 2) / (0.5 * HEIGHT * fractol->zoom) + fractol->move_y;
+	real = x / WIDTH;
+	i = y / WIDTH;
 	printf("x posicion %d\n", x);
 	printf("y posicion: %d\n", y);
 	if (keycode == MOUSE_UP)

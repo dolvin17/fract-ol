@@ -6,7 +6,7 @@
 /*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:19:21 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/29 23:39:57 by dolvin17         ###   ########.fr       */
+/*   Updated: 2023/12/30 00:22:20 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ typedef struct s_fractol
 
 }	t_fractol;
 
-# define WIDTH 1000
-# define HEIGHT 1000
+# define WIDTH 800
+# define HEIGHT 800
 //colors for fractal
 # define NEON_PINK 0xFF1493
 # define NEON_GREEN 0x00FF00

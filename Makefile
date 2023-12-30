@@ -6,15 +6,17 @@
 #    By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/20 21:02:51 by dolvin17          #+#    #+#              #
-#    Updated: 2023/12/28 12:41:20 by dolvin17         ###   ########.fr        #
+#    Updated: 2023/12/30 19:05:07 by dolvin17         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS =	main.c \
-		utils.c \
 		fractol.c \
 		rendering_fractol.c \
-		events.c
+		events.c \
+		utils.c \
+		utils_hooks.c \
+		utils_math.c 
 
 OBJS = $(SRCS:.c=.o)
 

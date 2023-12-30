@@ -6,7 +6,7 @@
 /*   By: dolvin17 <grks_17@hotmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 17:47:47 by dolvin17          #+#    #+#             */
-/*   Updated: 2023/12/29 23:29:56 by dolvin17         ###   ########.fr       */
+/*   Updated: 2023/12/30 01:04:04 by dolvin17         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_util_data(t_fractol *fractol)
 {
-	fractol->iterations = 10;
+	fractol->iterations = 70;
 	fractol->move_x = 0.0;
 	fractol->move_y = 0.0;
 	fractol->zoom = 1.0;
